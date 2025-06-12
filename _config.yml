@@ -104,8 +104,9 @@ analytics:
 author:
   name             : "Soma U"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Hi, I’m Soma, a cybersecurity engineer and educator exploring threat detection, malware analysis, and defensive automation through hands-on labs. **Security101** is my space to document real-world simulations, detection engineering, and lessons learned from building and breaking things in my home lab.
-This site is about sharing practical insights, not theory, from the front lines of security."
+  bio              : "Hi, I’m Soma, a cybersecurity engineer and educator exploring threat detection, malware analysis, and defensive automation through hands-on labs. 
+                     **Security101** is my space to document real-world simulations, detection engineering, and lessons learned from building and breaking things in my home lab.
+                     This site is about sharing practical insights, not theory, from the front lines of security."
   location         : "United Kindgom"
   email            :
   links:
