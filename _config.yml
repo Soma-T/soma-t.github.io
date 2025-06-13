@@ -10,7 +10,7 @@ title                    : "Security101"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Soma"
-description              : "An amazing website."
+description              : "Security101 is a hands-on cybersecurity blog by Soma, focused on home lab projects, malware analysis, detection engineering, and real-world defensive simulations. Learn by doing, from threat hunting to SIEM workflows, one scenario at a time.."
 url                      : "https://chisoma.com"
 baseurl                  : "/"
 repository               : "soma-t.github.io"
