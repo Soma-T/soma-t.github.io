@@ -6,21 +6,21 @@ minimal_mistakes_skin    : "dark" # or "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 locale                   : "en-UK"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Security101"
+title                    : "Soma U | Cybersecurity and Security Data"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Soma"
-description              : "Security101 is a hands-on cybersecurity blog by Soma, focused on home lab projects, malware analysis, detection engineering, and real-world defensive simulations. Learn by doing, from threat hunting to SIEM workflows, one scenario at a time."
+name                     : "Soma U"
+description              : "Cybersecurity portfolio by Soma U, covering security operations, detection engineering, incident response and enterprise network security, with practical Elastic lab work and ongoing learning in security data analysis, malware analysis, AI and machine learning."
 url                      : "https://chisoma.com"
 baseurl                  : "/"
-repository               : "soma-t.github.io"
+repository               : "Soma-T/soma-t.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
-copyright                : "soma"
+copyright                : "Soma U"
 copyright_url            : "https://chisoma.com"
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
@@ -88,9 +88,10 @@ og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type: Person
+  name: "Soma U"
+  links:
+    - "https://github.com/Soma-T"
 
 # Analytics
 analytics:
@@ -104,53 +105,24 @@ analytics:
 author:
   name             : "Soma U"
   avatar           :  "/assets/soma.PNG"
-  bio              : "Hi, I’m Soma, a cybersecurity engineer and educator exploring threat detection, malware analysis, and defensive automation through hands-on labs. 
-                     **Security101** is my space to document real-world simulations, detection engineering, and lessons learned from building and breaking things in my home lab.
-                     This site is about sharing practical insights, not theory, from the front lines of security."
+  bio              : >-
+                     I’m Soma U, a cybersecurity professional with experience in security operations,
+                     detection engineering, incident response and enterprise network security.
+                     I use this site to explain practical investigations and lab work, including the
+                     evidence, limits and lessons learned.
   location         : "United Kingdom"
   email            :
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+      url: "https://chisoma.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://github.com/Soma-T"
 
 # Site Footer
 footer:
-  links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
-
+  links: []
 
 # Reading Files
 include:
