@@ -7,18 +7,18 @@ author_profile: true
 
 This page separates existing lab exercises from projects still being built. I’ll add results only after testing them.
 
-## Elastic Security detection and investigation lab
+## Security detection and investigation lab
 
 **Stage: active lab work**
 
-My Elastic Security home lab includes detection and investigation exercises covering:
+My security lab includes Elastic Security. Current detection and investigation exercises cover:
 
-- Agent identity conflicts, including an ES|QL alert for multiple hosts using the same agent.
+- Agent Spoofing: Multiple Hosts Using Same Agent.
 - Failed logins.
 - Suspicious process activity, including rundll32.
 - Windows service creation.
 - New DNS domains.
-- Test malware indicators such as EICAR.
+- The benign EICAR test file.
 
 Each write-up will explain the alert logic, relevant event fields, investigation steps and what the evidence does or does not show.
 

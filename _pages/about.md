@@ -5,9 +5,11 @@ permalink: /about/
 author_profile: true
 ---
 
-I’m Soma U. My cybersecurity experience spans SOC operations, detection engineering, incident response and enterprise network security. I hold an MSc in Cybersecurity from Edge Hill University and the CompTIA CySA+ certification.
+I’m Soma U. I have more than seven years of cybersecurity experience across SOC operations, detection engineering, incident response and enterprise network security. I currently work as an SOC Analyst L2 and Security Engineer in detection engineering.
 
-My MSc research focused on image-based Android malware detection using deep learning. I’m now extending my work across security data analysis, Elastic investigations, malware analysis, AI and machine learning.
+I hold an MSc in Cybersecurity from Edge Hill University and the CompTIA CySA+ certification. My MSc research focused on image-based Android malware detection using deep learning.
+
+I’m extending my work across security data analysis, Elastic investigations, malware analysis, AI and machine learning.
 
 ## How I document work
 

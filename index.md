@@ -4,15 +4,15 @@ title: "Cybersecurity, Detection Engineering and Security Data"
 author_profile: true
 ---
 
-I’m **Soma U**, a cybersecurity professional with experience in SOC operations, detection engineering, incident response and enterprise network security.
+I’m **Soma U**, with more than seven years of cybersecurity experience across SOC operations, detection engineering, incident response and enterprise network security.
 
 I use this site to explain security work clearly: the question I investigated, the evidence I found, what I could not confirm and what I learned. My current focus brings together Elastic Security, security data analysis, malware analysis, AI and machine learning.
 
 ## Current work
 
-### Elastic Security home lab
+### Security detection and investigation lab
 
-I’m building and investigating detection scenarios in my Elastic Security lab. Existing exercises include agent identity conflicts, failed logins, suspicious process activity, Windows service creation, new DNS domains and test malware indicators.
+My security lab includes Elastic Security. Current detection and investigation exercises cover agent identity conflicts, failed logins, suspicious process activity, Windows service creation, new DNS domains and the benign EICAR test file.
 
 ### Read-Only Security Alert Agent with Synthetic Logs
 
