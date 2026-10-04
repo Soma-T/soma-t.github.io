@@ -24,7 +24,9 @@ Each write-up will explain the alert logic, relevant event fields, investigation
 
 ## Read-Only Security Alert Agent with Synthetic Logs
 
-**Stage: planned**
+**Stage: milestone 1 prepared. Elastic validation pending.**
+
+The first milestone prepares eight synthetic Windows events, expected findings, and a local validation script. The case covers a suspicious process and service sequence, incomplete evidence, instruction-like text inside a log, and a benign control. The records have not yet been imported into Elastic.
 
 The goal is to build a small assistant that helps an analyst investigate a test alert. It will use read-only access to a dedicated Elastic lab index and produce:
 
@@ -34,6 +36,8 @@ The goal is to build a small assistant that helps an analyst investigate a test 
 - Follow-up checks for a human analyst.
 
 The project will use synthetic or lab-generated telemetry. The agent will not write to Elastic, isolate hosts, disable accounts or run response actions. I’ll test how it handles incomplete evidence and instruction-like text inside log fields.
+
+[Open the project lab page](/projects/read-only-security-alert-agent/)
 
 [Read the project brief](/notes/read-only-security-alert-agent-project-brief/)
 
