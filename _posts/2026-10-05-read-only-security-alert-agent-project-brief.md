@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Project Brief: Read-Only Security Alert Agent with Synthetic Logs"
-date: 2026-10-05
+date: 2026-10-05T00:00:00+01:00
 permalink: /notes/read-only-security-alert-agent-project-brief/
 categories: [security, ai, home-lab]
 tags: [elastic-security, alert-triage, synthetic-logs, responsible-ai]
