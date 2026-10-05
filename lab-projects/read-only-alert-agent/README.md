@@ -8,7 +8,7 @@ Build a small assistant that helps an analyst understand one security alert. It 
 
 We are preparing a safe practice case. The records describe one made-up Windows computer where PowerShell starts a service-creation command, Windows records the service, and PowerShell later makes a connection to a reserved example IP address. The sequence gives us something to investigate. It does not prove a real attack.
 
-This milestone creates the practice records and writes down what a correct investigation should notice. We have not yet loaded them into Elastic or built the AI assistant.
+The dedicated Elastic index now exists. It is empty. The next step is loading the synthetic practice records.
 
 ## Files
 
@@ -37,9 +37,13 @@ python3 validate_dataset.py
 
 Expected output starts with `PASS` for the eight records and safety checks. This only validates the sample files. It is not an Elastic test.
 
+## Elastic lab checkpoint
+
+On 5 October 2026, the `synthetic-alert-lab` index was created in Elastic 9.5.3 with zero replicas. Kibana returned HTTP 200. The index check showed green health, one primary shard, zero replicas and zero documents. This confirms the empty index only.
+
 ## Load the events into Elastic
 
-Only do this in your own lab. Open Kibana Dev Tools and paste the contents of `data/security-alert.bulk.ndjson` after this request:
+In your own lab, open Kibana Dev Tools and paste the contents of `data/security-alert.bulk.ndjson` after this request:
 
 ```http
 POST _bulk
@@ -57,7 +61,7 @@ GET synthetic-alert-lab/_search
 }
 ```
 
-Check the index and result count before moving on. If Kibana returns mapping or permission errors, stop and record the exact error. Do not grant the agent write access to make an error go away.
+The expected count is eight. If Kibana returns mapping or permission errors, stop and record the exact error. Do not grant the agent write access to make an error go away.
 
 ## First investigation question
 
@@ -73,4 +77,4 @@ Can you connect evt-001 through evt-005 into one timeline using the host name, p
 
 ## Current status
 
-Milestone 1: synthetic fixture and expected findings prepared. Local validation is the next check. Elastic import, query validation, and all agent work remain pending. The project must not be described as tested in a live Elastic environment until those checks have been run and recorded.
+Milestone 1 fixture and expected findings are prepared. Local validation passed. The Elastic index creation and empty-index check passed. Event import, query validation, and all agent work remain pending. Do not describe the project as a tested live alert investigation until those checks have been run and recorded.
