@@ -11,7 +11,7 @@ Build a small assistant that reads a test alert and related events from a dedica
 
 ## Milestone 1: synthetic case
 
-**Status: project index created and verified. Event import is next.**
+**Status: synthetic events imported and manually reviewed in Elastic. The read-only agent is not built yet.**
 
 The practice case contains eight clearly marked synthetic Windows events. The main sequence covers a lab-user logon, hidden PowerShell with harmless encoded text, a service creation command, a service-installed record, and a connection to a documentation-only test IP. It also includes an incomplete event, instruction-like text inside a log message, and a benign control event.
 
@@ -19,18 +19,39 @@ The event sequence is a triage exercise. It does not prove malware or malicious 
 
 ## Elastic checkpoint
 
-On 5 October 2026, I created the dedicated `synthetic-alert-lab` index in my Elastic 9.5.3 home lab. Kibana returned HTTP 200 and confirmed the index was created. A follow-up index check showed green health, one primary shard, zero replicas and zero documents.
+On 5 October 2026, I created the dedicated `synthetic-alert-lab` index in my Elastic 9.5.3 home lab. I imported eight synthetic events. The bulk response reported `errors: false`, and the count check returned eight documents.
 
-This verifies the empty index only. The synthetic events have not yet been imported or queried.
+I created a Kibana data view for `synthetic-alert-lab` using `@timestamp`. In Discover, the exact KQL filter `labels.case.keyword : "alert-agent-001"` returned five events for the main case. The other three documents are separate tests for incomplete evidence, instruction-like log content, and a benign control.
 
-## How I will test it
+## Lab evidence
 
-1. Load the eight synthetic events into `synthetic-alert-lab`.
-2. Confirm the document count and inspect the event fields.
-3. Reconstruct the timeline and record the event IDs supporting each finding.
-4. Check whether the incomplete record is reported as a correlation gap.
-5. Check whether the instruction-like message remains untrusted evidence.
-6. Build the read-only assistant only after the expected findings are clear.
+![Kibana Dev Tools showing successful creation of the synthetic-alert-lab index](/assets/images/read-only-alert-agent/index-created.png)
+
+*Figure 1. Kibana acknowledged creation of the dedicated lab index.*
+
+![Kibana Dev Tools showing a count of eight documents in synthetic-alert-lab](/assets/images/read-only-alert-agent/event-count-verified.png)
+
+*Figure 2. The count check returned eight documents with no shard failures.*
+
+The screenshot evidence shows index setup and record count. These are synthetic documents stored in Elastic. They do not show a real Windows endpoint or a real network connection.
+
+## Investigation findings so far
+
+- evt-001 records a synthetic successful logon for the lab user.
+- evt-002 records hidden PowerShell. Its harmless encoded text decodes to `SANDBOX`.
+- evt-003 records `sc.exe` creating the `LabUpdate` service. Its parent process is PowerShell process `proc-100`.
+- evt-004 records the service installation under Windows event code 7045.
+- evt-005 records an outbound connection attempt attributed to PowerShell process `proc-100`. The record uses a reserved example address. It does not prove the connection succeeded.
+- evt-006 has no process ID or parent process, so the record cannot be reliably linked to another process.
+- evt-007 contains instruction-like text in a log message. It remains untrusted event data.
+- evt-008 is a benign control on a different lab host.
+
+## Next tests
+
+1. Search for `labels.synthetic : true` and confirm the eight practice records.
+2. Compare the five main-case events with evt-006, evt-007, and evt-008.
+3. Write the expected analyst summary and evidence links.
+4. Build a small read-only Python prototype and check its output against the expected findings.
 
 The assistant will never change Elastic data, isolate a host, disable an account, or run a response action.
 
@@ -40,4 +61,4 @@ The data, expected findings, validation script, and lab runbook are in the [proj
 
 ## Current evidence
 
-The fixture passes local validation. The Elastic index creation and empty-index check passed. The next evidence will cover event import, count, query results, findings and limitations. The uploaded screenshot includes an index UUID, so I will crop or obscure it before sharing the image publicly.
+The fixture passes local validation. Elastic accepted the eight synthetic documents, the count endpoint returned eight, and the exact case filter returned the five main-case events. The screenshot images above omit document IDs and event details that are not needed for these setup checks.

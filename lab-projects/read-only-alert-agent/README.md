@@ -6,9 +6,9 @@ Build a small assistant that helps an analyst understand one security alert. It 
 
 ## Plain-English version
 
-We are preparing a safe practice case. The records describe one made-up Windows computer where PowerShell starts a service-creation command, Windows records the service, and PowerShell later makes a connection to a reserved example IP address. The sequence gives us something to investigate. It does not prove a real attack.
+This is a safe practice case made from synthetic records. They describe a made-up Windows computer where PowerShell starts a service-creation command, Windows records the service, and PowerShell later has a connection-attempt record for a reserved example IP address. The sequence gives us something to investigate. It does not prove a real attack or a real network connection.
 
-The dedicated Elastic index now exists. It is empty. The next step is loading the synthetic practice records.
+The eight synthetic records have been imported into the dedicated Elastic index. The read-only assistant has not been built yet.
 
 ## Files
 
@@ -39,33 +39,27 @@ Expected output starts with `PASS` for the eight records and safety checks. This
 
 ## Elastic lab checkpoint
 
-On 5 October 2026, the `synthetic-alert-lab` index was created in Elastic 9.5.3 with zero replicas. Kibana returned HTTP 200. The index check showed green health, one primary shard, zero replicas and zero documents. This confirms the empty index only.
+On 5 October 2026, I created the `synthetic-alert-lab` index in Elastic 9.5.3 with zero replicas. Kibana acknowledged the index creation. I imported the eight synthetic events through the Bulk API. The response reported `errors: false`, and `GET /synthetic-alert-lab/_count` returned eight documents with zero failed shards.
 
-## Load the events into Elastic
+I created a Kibana data view for this index using `@timestamp`. In Discover, the exact filter below returned five documents for the main case:
 
-In your own lab, open Kibana Dev Tools and paste the contents of `data/security-alert.bulk.ndjson` after this request:
-
-```http
-POST _bulk
+```text
+labels.case.keyword : "alert-agent-001"
 ```
 
-The bulk file writes only to `synthetic-alert-lab`. It does not delete or update other indices. Check the response for `"errors": false`.
+The other three records use separate case labels for an incomplete event, an instruction-like message test, and a benign control. They remain in the index.
 
-Then confirm the records exist:
+Do not replay the bulk file into the populated index. Its actions generate document IDs, so another import would add duplicates.
 
-```http
-GET synthetic-alert-lab/_search
-{
-  "size": 20,
-  "sort": [{"@timestamp": "asc"}]
-}
-```
+## Manual findings
 
-The expected count is eight. If Kibana returns mapping or permission errors, stop and record the exact error. Do not grant the agent write access to make an error go away.
+The main sequence links the hidden PowerShell process in evt-002 to the `sc.exe` child process in evt-003 through the process entity IDs. evt-004 records installation of the named service. evt-005 attributes a connection attempt to the same PowerShell process.
 
-## First investigation question
+These are synthetic records. The connection-attempt event does not prove that a packet left the lab computer or that a remote system responded. The event sequence supports a practice triage narrative, not a claim of real compromise.
 
-Can you connect evt-001 through evt-005 into one timeline using the host name, process entity ID, service name, and timestamps? Start by checking the count, then inspect each event. Note which fields support each statement and which facts the records cannot establish.
+## Next milestone
+
+Review the three remaining records, write the expected analyst output, then build a small read-only Python prototype. Keep the first version limited to the synthetic fixture. Add Elastic read-only retrieval only after the local output matches the expected findings.
 
 ## Safety boundaries
 
@@ -77,4 +71,4 @@ Can you connect evt-001 through evt-005 into one timeline using the host name, p
 
 ## Current status
 
-Milestone 1 fixture and expected findings are prepared. Local validation passed. The Elastic index creation and empty-index check passed. Event import, query validation, and all agent work remain pending. Do not describe the project as a tested live alert investigation until those checks have been run and recorded.
+Milestone 1 fixture validation passed. The Elastic index creation, eight-document import, count check, data view, and five-document main-case filter were completed in the home lab. The AI assistant has not been built or tested. Describe the work as a synthetic home-lab investigation, not a production alert investigation.
