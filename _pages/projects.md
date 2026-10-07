@@ -24,7 +24,9 @@ Each write-up will explain the alert logic, relevant event fields, investigation
 
 ## Read-Only Security Alert Agent with Synthetic Logs
 
-**Stage: planned**
+**Stage: milestone 1 in progress. Eight synthetic events imported and reviewed in Elastic. The read-only agent is not built yet.**
+
+The first milestone uses eight synthetic Windows events, expected findings, and a local validation script. I created the dedicated `synthetic-alert-lab` index in Elastic 9.5.3, imported the eight records, and verified the document count. An exact Discover filter returns five events for the main case. The remaining three records test missing evidence, instruction-like log content, and a benign control.
 
 The goal is to build a small assistant that helps an analyst investigate a test alert. It will use read-only access to a dedicated Elastic lab index and produce:
 
@@ -34,6 +36,8 @@ The goal is to build a small assistant that helps an analyst investigate a test 
 - Follow-up checks for a human analyst.
 
 The project will use synthetic or lab-generated telemetry. The agent will not write to Elastic, isolate hosts, disable accounts or run response actions. I’ll test how it handles incomplete evidence and instruction-like text inside log fields.
+
+[Open the project lab page](/projects/read-only-security-alert-agent/)
 
 [Read the project brief](/notes/read-only-security-alert-agent-project-brief/)
 
